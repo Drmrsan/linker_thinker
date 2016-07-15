@@ -1,0 +1,35 @@
+<% @links.each do |link| %>
+
+ <div class="card">
+    <div class="card-content">
+        <span class="card-title"><%= link.title %></span>
+        <p>Created <%= time_ago_in_words(link.created_at) %> ago by <i><%= link.user.email %></i></p>
+        <span class="close">
+            <% if user_signed_in? %>
+                <% if current_user.id == link.user_id %>
+                    <%= link_to "x" , link_path(link), method: :delete, data:{confirm: "Are you sure?"} %>
+                <% end %>
+            <% end %>
+        </span>
+    </div>
+    <div class="card-action">
+      <%= link_to "Show", link_path(link), class:"waves-effect waves-light btn" %>
+      <% if user_signed_in? %>
+        <% if current_user.id == link.user_id %>
+            <%= link_to "Edit", link_path(link), class:"waves-effect waves-light btn" %>
+        <% end %>    
+      <% end %>  
+      <span class="vote">
+            <%= link_to like_link_path(link), method: :put do %>
+                <i class="material-icons tiny">thumb_up</i>
+                <%= link.get_upvotes.size %>
+            <% end %>
+            <%= link_to dislike_link_path(link), method: :put do %>
+                <i class="material-icons tiny">thumb_down</i>
+                <%= link.get_downvotes.size %>
+            <% end %>
+        </span>
+    </div>
+  </div>
+
+<% end %>

@@ -1,0 +1,29 @@
+<nav>
+	<div class="nav-wrapper">
+	  <%= link_to "LinkerThinker", root_path, class: "brand-logo" %>
+	  <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+	  <ul class="right hide-on-med-and-down">
+	  	<% if user_signed_in? %>
+
+	    	<li><%= link_to "Add Link", new_link_path, class:"waves-effect waves-light btn" %></li>
+	    	<li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"" %></li>
+	    	<li><%= link_to "Signed in as: " + current_user.email, edit_user_registration_path, class:"" %></li>
+	    <% else %>
+	    	<li><%= link_to "Sign up", new_user_registration_path, class:"" %></li>
+	    	<li><%= link_to "Login", new_user_session_path, class:"" %></li>
+	    <% end %>
+	    
+	  </ul>
+	  <ul class="side-nav" id="mobile-demo">
+	    <% if user_signed_in? %>
+
+	    	<li><%= link_to "Add Link", "#", class:"waves-effect waves-light btn" %></li>
+	    	<li><%= link_to "Sign out", "#", class:"" %></li>
+	    	<li><%= link_to "Signed in as:", "#", class:"" %></li>
+	    <% else %>
+	    	<li><%= link_to "Sign up", "#", class:"" %></li>
+	    	<li><%= link_to "Login", "#", class:"" %></li>
+	    <% end %>
+	  </ul>
+	</div>
+</nav>
