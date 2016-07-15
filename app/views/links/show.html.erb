@@ -1,2 +1,10 @@
-<%= @link.title %>
-<%= @link.link %>
+<h2><%= @link.title %></h2>
+<p><%= @link.description %></p>
+
+<%= link_to "Visit URL", @link.link, class:"waves-effect waves-light btn" %>
+
+
+<%= simple_form_for [@link, Comment.new] do |f| %>
+	<%= f.input :body %>
+	<%= f.button :submit %>
+<% end %>

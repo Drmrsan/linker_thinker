@@ -21,6 +21,10 @@ class LinksController < ApplicationController
 		end
 	end
 
+	def show
+		# @comment = @link.comments(params[:link_id])
+	end
+
 	def destroy
 		@link.destroy
 		redirect_to :back
