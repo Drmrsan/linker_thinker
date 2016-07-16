@@ -3,7 +3,7 @@ class LinksController < ApplicationController
 	before_filter :authenticate_user!, except: [:index, :show]
 	def index
 		@links = Link.all
-		@link  = Link.new
+		# @link  = Link.new
 	end
 
 	def new
