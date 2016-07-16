@@ -3,8 +3,23 @@
 
 <%= link_to "Visit URL", @link.link, class:"waves-effect waves-light btn" %>
 
+<span class="vote-show">
+    <%= link_to like_link_path(@link), method: :put do %>
+        <i class="material-icons tiny">thumb_up</i>
+        <%= @link.get_upvotes.size %>
+    <% end %>
+    <%= link_to dislike_link_path(@link), method: :put do %>
+        <i class="material-icons tiny">thumb_down</i>
+        <%= @link.get_downvotes.size %>
+    <% end %>
+</span>
 
-<%= simple_form_for [@link, Comment.new] do |f| %>
-	<%= f.input :body %>
+<br>
+<h5 class="comment-header">Comments</h5>
+<hr class="comment-divider">
+<%= render @link.comments %>
+
+<%= simple_form_for ([@link, @link.comments.build])  do |f| %>
+	<%= f.text_area :body, id:"body", class:" input-field materialize-textarea", placeholder: "Leave comment" %>
 	<%= f.button :submit %>
 <% end %>

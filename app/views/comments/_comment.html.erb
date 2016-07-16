@@ -1,1 +1,11 @@
-<%= comment.body %>	
+<div class="comment-content">
+	<p><%= comment.body %></p>
+	<p><small>Submited <%= time_ago_in_words(comment.created_at)  %>ago by <i><%= comment.user.name %></i></small></p>
+	<div class="delete-comment">
+		<% if user_signed_in? %>
+			<% if comment.user == current_user %>
+				<%= link_to "x", link_comment_path(@link, comment), method: :delete, data:{confirm: "Are you sure?"} %>
+			<% end %>
+		<% end %>
+	</div>
+</div>

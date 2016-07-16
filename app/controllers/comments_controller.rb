@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+	before_filter :authenticate_user!
 	def create
 		@link = Link.find(params[:link_id])
 		@comment = @link.comments.build comment_params
@@ -9,6 +10,12 @@ class CommentsController < ApplicationController
 		else
 			render 'new'
 		end
+	end
+
+	def destroy
+		@comment = Comment.find(params[:id])
+		@comment.destroy
+		redirect_to :back
 	end
 
 	private

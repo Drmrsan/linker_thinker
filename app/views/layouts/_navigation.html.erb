@@ -7,7 +7,7 @@
 
 	    	<li><%= link_to "Add Link", new_link_path, class:"waves-effect waves-light btn" %></li>
 	    	<li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"" %></li>
-	    	<li><%= link_to "Signed in as: " + current_user.email, edit_user_registration_path, class:"" %></li>
+	    	<li><%= link_to "Signed in as: " + current_user.name, edit_user_registration_path, class:"" %></li>
 	    <% else %>
 	    	<li><%= link_to "Sign up", new_user_registration_path, class:"" %></li>
 	    	<li><%= link_to "Login", new_user_session_path, class:"" %></li>

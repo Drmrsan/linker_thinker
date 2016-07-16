@@ -1,5 +1,5 @@
 class LinksController < ApplicationController
-	before_action :find_link, only: [:show, :edit, :destroy]
+	before_action :find_link, only: [:update, :show, :edit, :destroy]
 	before_filter :authenticate_user!, except: [:index, :show]
 	def index
 		@links = Link.all
@@ -11,8 +11,7 @@ class LinksController < ApplicationController
 	end
 
 	def create
-		@link = current_user.links.build (link_params)
-		# @link.user_id == current_user
+		@link = current_user.links.build link_params
 
 		if @link.save
 			redirect_to root_path, notice: "New link created"
@@ -22,7 +21,17 @@ class LinksController < ApplicationController
 	end
 
 	def show
-		# @comment = @link.comments(params[:link_id])
+	end
+
+	def edit
+	end
+
+	def update
+		if @link.update link_params
+			redirect_to root_path, notice: 'Link updated'
+		else
+			render 'edit'
+		end
 	end
 
 	def destroy
