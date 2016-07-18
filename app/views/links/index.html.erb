@@ -3,7 +3,13 @@
  <div class="card">
     <div class="card-content">
         <span class="card-title"><%= link.title %></span>
-        <p>Created <%= time_ago_in_words(link.created_at) %> ago by <i><%= link.user.name %></i></p>
+        <p>Created <%= time_ago_in_words(link.created_at) %> ago by <i>
+        <% if link.user.name.blank? %>
+            <%= link.user.email%></i></p>
+        <% else %>
+            <%= link.user.name %></i></p>
+        <% end %>
+
         <span class="close">
             <% if user_signed_in? %>
                 <% if current_user.id == link.user_id %>
@@ -33,3 +39,7 @@
   </div>
 
 <% end %>
+<ul class="pagination">
+    <li class="waves-effect"><%= will_paginate @links %></li>
+  </ul>
+

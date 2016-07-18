@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
 		if @comment.save
 			redirect_to :back
 		else
-			render 'new'
+			redirect_to :back 
 		end
 	end
 

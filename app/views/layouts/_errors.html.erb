@@ -1,0 +1,12 @@
+<% if @link.errors.any? %>
+		<div id="errors">
+			<h2>From contains <%= pluralize(@link.errors.count, "error") %>.</h2>
+			<ul>
+				<% @link.errors.full_messages .each do |msg|%>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>

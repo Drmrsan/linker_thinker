@@ -14,6 +14,9 @@ gem 'materialize-sass'
 gem 'devise', '~> 4.2'
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
 gem 'acts_as_votable', '~> 0.10.0'
+gem 'omniauth-google-oauth2', '~> 0.4.1'
+gem 'omniauth-facebook', '~> 3.0'
+gem 'will_paginate-materialize'
 
 
 group :production do

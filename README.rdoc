@@ -26,3 +26,12 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+ 	<li><%= link_to "Signed in as: " + current_user.name, edit_user_registration_path, class:"" %></li>
+
+
+ 	<% if !current_user.name.blank? %>
+			<li><%= link_to "Signed in as: " + current_user.name, edit_user_registration_path, class:"" %></li>
+		<% else %>
+			<li><%= link_to "Signed in as: " + current_user.email, edit_user_registration_path, class:"" %></li>
+		<% end %>

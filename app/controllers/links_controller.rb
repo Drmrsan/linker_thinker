@@ -2,7 +2,7 @@ class LinksController < ApplicationController
 	before_action :find_link, only: [:update, :show, :edit, :destroy]
 	before_filter :authenticate_user!, except: [:index, :show]
 	def index
-		@links = Link.all
+		@links = Link.all.paginate( page: params[:page], per_page: 4).order("created_at DESC")
 		# @link  = Link.new
 	end
 

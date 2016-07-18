@@ -6,13 +6,26 @@
 	  	<% if user_signed_in? %>
 
 	    	<li><%= link_to "Add Link", new_link_path, class:"waves-effect waves-light btn" %></li>
-	    	<li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"" %></li>
-	    	<li><%= link_to "Signed in as: " + current_user.name, edit_user_registration_path, class:"" %></li>
+	    	<li class="navigation-avatar"><%= image_tag(current_user.image) if current_user.image%></li>
+	    	<li><a class="dropdown-button" href="#!" data-activates="dropdown1">
+		    	<% if !current_user.name.blank? %>
+				<%= current_user.name %>
+			<% else %>
+				<%= current_user.email %>
+			<% end %>
+	    	<i class="material-icons right">arrow_drop_down</i></a></li>
+
+		<ul id="dropdown1" class="dropdown-content">
+		  <li><%= link_to "Account", edit_user_registration_path %></li>
+		  <li class="divider"></li>
+		  <li><%= link_to "Sign out", destroy_user_session_path, method: :delete  %></li>
+		</ul>
+
 	    <% else %>
 	    	<li><%= link_to "Sign up", new_user_registration_path, class:"" %></li>
 	    	<li><%= link_to "Login", new_user_session_path, class:"" %></li>
 	    <% end %>
-	    
+	   
 	  </ul>
 	  <ul class="side-nav" id="mobile-demo">
 	    <% if user_signed_in? %>
