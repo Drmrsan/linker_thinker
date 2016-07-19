@@ -4,6 +4,7 @@ ruby '2.3.1'
 
 gem 'rails', '4.2.6'
 gem 'sass-rails', '~> 5.0'
+gem 'compass-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
@@ -18,6 +19,7 @@ gem 'omniauth-google-oauth2', '~> 0.4.1'
 gem 'omniauth-facebook', '~> 3.0'
 gem 'will_paginate-materialize'
 gem 'font-awesome-rails', '~> 4.6', '>= 4.6.3.1'
+gem 'breakpoint', '~> 2.7'
 
 
 group :production do
