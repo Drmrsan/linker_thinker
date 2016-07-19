@@ -27,8 +27,15 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", class:"waves-effect waves-light btn login-button" %>
+    <p>or</p>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<div class="social-login">
+  <%- if devise_mapping.omniauthable? %>
+    <%- resource_class.omniauth_providers.each do |provider| %>
+      <%= link_to "Sign in with ", omniauth_authorize_path(resource_name, provider) %><br />
+    <% end -%>
+  <% end -%>
+</div>

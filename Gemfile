@@ -17,6 +17,7 @@ gem 'acts_as_votable', '~> 0.10.0'
 gem 'omniauth-google-oauth2', '~> 0.4.1'
 gem 'omniauth-facebook', '~> 3.0'
 gem 'will_paginate-materialize'
+gem 'font-awesome-rails', '~> 4.6', '>= 4.6.3.1'
 
 
 group :production do

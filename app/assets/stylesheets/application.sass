@@ -15,6 +15,7 @@
  */
 
 @import "materialize"
+@import "font-awesome"
 
 html,body
 	width: 100%
@@ -22,12 +23,13 @@ html,body
 
 nav
 	background-color: #37474f
-	margin-bottom: 100px
 
 .brand-logo
 	font-weight: 400
 	margin-left: 20px
-
+	.t
+		color: teal
+		font-weight: bold
 .card
 	position: relative
 	background-color: #546e7a
@@ -124,14 +126,16 @@ p.notice
 	left: 0
 	width: 66%
 	margin-left: 17%
+.search-form
+	input[type="text"]#search
+		height: 1em
+		font-size: 2em
+		width: 0
+		transition: width .3s ease-in-out
+	input[type="text"]#search.show
+		width: 300px
+.side-nav li.mobile-search
 
-input[type="text"]#search
-	height: 1em
-	font-size: 2em
-	width: 0
-	transition: width .3s ease-in-out
-input[type="text"]#search.show
-	width: 300px
 
 
 span.comment-count
@@ -148,3 +152,52 @@ span.comment-count
 
 nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons
 	display: inline-block
+
+
+.social-login
+	display: flex
+	align-items: center
+
+	a[href="/users/auth/google_oauth2"]
+		color: white
+		background: #D73D32
+		padding: 10px
+		border-radius: 5px
+		margin: 10px 10px 10px 0
+		&:after
+			font-family: "FontAwesome"
+			content: "\f0d5"
+		&:hover
+			color: white
+			background: darken(#D73D32, 5)
+
+	a[href="/users/auth/facebook"]
+		color: white
+		background: #3B5998
+		border: 1px solid  #3B5998
+		padding: 10px
+		border-radius: 5px
+		margin: 10px 0
+		&:after
+			font-family: "FontAwesome"
+			content: "\f082"
+		&:hover
+			color: white
+			background: darken(#3B5998, 5)
+
+.actions
+	.login-button
+		background: #37474F
+		margin: 10px 0 0 0
+	p
+		margin: 5px 0
+
+.index-title
+	color: #37474F
+	padding: 30px 0
+	i
+		color: white
+		background: #37474F
+		border-radius: 50%
+		padding: 15px
+
