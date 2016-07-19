@@ -22,15 +22,26 @@ $( document ).ready(function(){
 	$('.modal-trigger').leanModal();
 
 	$('.dropdown-button').dropdown({
-      inDuration: 300,
-      outDuration: 225,
-      constrain_width: true, // Does not change width of dropdown to that of the activator
-      hover: false, // Activate on hover
-      gutter: 0, // Spacing from edge
-      belowOrigin: true, // Displays dropdown below the button
-      alignment: 'left' // Displays dropdown with edge aligned to the left of button
-	    }
-	);
+                        inDuration: 300,
+                        outDuration: 225,
+                        constrain_width: true, // Does not change width of dropdown to that of the activator
+                        hover: false, // Activate on hover
+                        gutter: 0, // Spacing from edge
+                        belowOrigin: true, // Displays dropdown below the button
+                        alignment: 'left' // Displays dropdown with edge aligned to the left of button
+                  	    }
+                  	);
+
+                  $('i.material-icons.search').on('click', function() {
+                        $('input[type="text"]#search').toggleClass('show');
+                        console.log("clicked");  
+                  });
+
+                  setTimeout(function(){
+                        $('.notification').fadeOut('slow', function(){
+                              $(this).remove();
+                        })
+                  }, 3000);
 
 })
 

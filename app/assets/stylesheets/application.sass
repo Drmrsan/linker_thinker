@@ -22,7 +22,7 @@ html,body
 
 nav
 	background-color: #37474f
-	margin-bottom: 50px
+	margin-bottom: 100px
 
 .brand-logo
 	font-weight: 400
@@ -103,3 +103,48 @@ li.navigation-avatar
 .pagination li.active
 	background-color: #2BBBAD
 	padding: 0 5px
+
+.mobile-signout
+	position: absolute
+	bottom: 0
+	left: 0
+	display: block
+	margin-bottom: 64px
+	width: 100%
+
+p.notice
+	background: #f9c681
+	color: white
+	font-weight: bold
+	text-align: center
+	padding: 20px 0
+	border-radius: 5px
+	position: absolute
+	top: 65px
+	left: 0
+	width: 66%
+	margin-left: 17%
+
+input[type="text"]#search
+	height: 1em
+	font-size: 2em
+	width: 0
+	transition: width .3s ease-in-out
+input[type="text"]#search.show
+	width: 300px
+
+
+span.comment-count
+	position: relative
+	span
+		position: absolute
+		left: 40px
+		top: 0
+	i
+		span
+		position: absolute
+		left: 10px
+		top: 0
+
+nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons
+	display: inline-block

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Linker</title>
+  <title>Linker-Thinker</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -10,9 +10,15 @@
 <body>
 <%= render "layouts/navigation" %>
 <div class="container">
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
+	<div class="notification">
+		<% if notice %>
+			<p class="notice"><%= notice %></p>
+		<% elsif alert %>
+			<p class="alert"><%= alert %></p>
+		<% end %>
+	</div>
 	
+
 	<%= yield %>
 </div>
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>

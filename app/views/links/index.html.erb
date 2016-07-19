@@ -1,45 +1,56 @@
-<% @links.each do |link| %>
+<% if @links.present? %>
+    <% @links.each do |link| %>
 
- <div class="card">
-    <div class="card-content">
-        <span class="card-title"><%= link.title %></span>
-        <p>Created <%= time_ago_in_words(link.created_at) %> ago by <i>
-        <% if link.user.name.blank? %>
-            <%= link.user.email%></i></p>
-        <% else %>
-            <%= link.user.name %></i></p>
-        <% end %>
+     <div class="card">
+        <div class="card-content">
+            <span class="card-title"><%= link.title %></span>
+            <p>Created <%= time_ago_in_words(link.created_at) %> ago by <i>
+            <% if link.user.name.blank? %>
+                <%= link.user.email%></i></p>
+            <% else %>
+                <%= link.user.name %></i></p>
+            <% end %>
 
-        <span class="close">
-            <% if user_signed_in? %>
-                <% if current_user.id == link.user_id %>
-                    <%= link_to "x" , link_path(link), method: :delete, data:{confirm: "Are you sure?"} %>
+            <span class="close">
+                <% if user_signed_in? %>
+                    <% if current_user.id == link.user_id %>
+                        <%= link_to "x" , link_path(link), method: :delete, data:{confirm: "Are you sure?"} %>
+                    <% end %>
                 <% end %>
-            <% end %>
+            </span>
+        </div>
+        <div class="card-action">
+          <%= link_to "Show", link_path(link), class:"waves-effect waves-light btn" %>
+          <% if user_signed_in? %>
+            <% if current_user.id == link.user_id %>
+                <%= link_to "Edit", edit_link_path(link), class:"waves-effect waves-light btn" %>
+            <% end %>    
+          <% end %>
+        <span class="comment-count">
+            <i class="material-icons">chat_bubble</i>
+            <span><%= link.comments.count %></span>
         </span>
-    </div>
-    <div class="card-action">
-      <%= link_to "Show", link_path(link), class:"waves-effect waves-light btn" %>
-      <% if user_signed_in? %>
-        <% if current_user.id == link.user_id %>
-            <%= link_to "Edit", edit_link_path(link), class:"waves-effect waves-light btn" %>
-        <% end %>    
-      <% end %>  
-      <span class="vote">
-            <%= link_to like_link_path(link), method: :put do %>
-                <i class="material-icons tiny">thumb_up</i>
-                <%= link.get_upvotes.size %>
-            <% end %>
-            <%= link_to dislike_link_path(link), method: :put do %>
-                <i class="material-icons tiny">thumb_down</i>
-                <%= link.get_downvotes.size %>
-            <% end %>
-        </span>
-    </div>
-  </div>
+          
+          <span class="vote">
+                <%= link_to like_link_path(link), method: :put do %>
+                    <i class="material-icons tiny">thumb_up</i>
+                    <%= link.get_upvotes.size %>
+                <% end %>
+                <%= link_to dislike_link_path(link), method: :put do %>
+                    <i class="material-icons tiny">thumb_down</i>
+                    <%= link.get_downvotes.size %>
+                <% end %>
+            </span>
+        </div>
+      </div>
 
+    <% end %>
+<% else %>
+    <p>There are no links containing the term(s) <b><i><%= params[:search] %>.</i></b></p>
+    <%= link_to "Back to index", root_path, class:" btn waves-effect waves-light" %>
 <% end %>
-<ul class="pagination">
+
+<ul class="pagination center">
     <li class="waves-effect"><%= will_paginate @links %></li>
-  </ul>
+</ul>
 
